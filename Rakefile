@@ -1,4 +1,7 @@
+HANDBRAKE_PREFIX = `brew --prefix handbrake`.strip
+HANDBRAKE_PATH = File.join(HANDBRAKE_PREFIX, 'bin/HandbrakeCLI')
+
 desc 'Transcode a video from one format to the another'
 task :transcode do
-   puts 'Hello, world'
+   puts `#{HANDBRAKE_PATH} --version`
 end
