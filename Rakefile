@@ -1,3 +1,5 @@
+# These commands require you first to run `brew bundle` in this repo.
+
 HANDBRAKE_PREFIX = `brew --prefix handbrake`.strip
 HANDBRAKE_PATH = File.join(HANDBRAKE_PREFIX, 'bin/HandbrakeCLI')
 
