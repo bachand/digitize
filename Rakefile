@@ -16,5 +16,5 @@ task :transcode, [:source_path] do |task, args|
    warning("hello warning")
    error("hello error")
    puts source_path
-   # puts `#{HANDBRAKE_PATH} --version`
+   run("#{HANDBRAKE_PATH} --version")
 end
