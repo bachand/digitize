@@ -15,6 +15,12 @@ def error(message)
   $stderr.puts message.red
 end
 
+# Invokes `error` and exits with status code 1.
+def error_and_exit(message)
+  error(message)
+  exit(1)
+end
+
 # Runs a shell command.
 def run(command)
   system(command)

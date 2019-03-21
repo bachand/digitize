@@ -10,13 +10,11 @@ HANDBRAKE_PATH = File.join(HANDBRAKE_PREFIX, 'bin/HandbrakeCLI')
 desc 'Transcode a video from one format to the another'
 task :transcode, [:source_path] do |task, args|
    source_path = args[:source_path]
-   warning('Missing source path.') unless source_path
-   warning("#{source_path} does not exist.") unless File.exist?(source_path)
+   error_and_exit('Missing source path.') unless source_path
+   error_and_exit("#{source_path} does not exist.") unless File.exist?(source_path)
+   error_and_exit('Source must be a file.') unless Pathname.new(source_path).file?
    escaped_source_path = Shellwords.escape(source_path)
 
-   info("hello info")
-   warning("hello warning")
-   error("hello error")
    puts escaped_source_path
    run("#{HANDBRAKE_PATH} --version")
 end
