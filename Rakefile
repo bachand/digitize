@@ -14,7 +14,5 @@ task :transcode, [:source_path] do |task, args|
    error_and_exit("#{source_path} does not exist.") unless File.exist?(source_path)
    error_and_exit('Source must be a file.') unless Pathname.new(source_path).file?
    escaped_source_path = Shellwords.escape(source_path)
-
-   puts escaped_source_path
-   run("#{HANDBRAKE_PATH} --version")
+   run("#{HANDBRAKE_PATH} -i #{escaped_source_path}")
 end
