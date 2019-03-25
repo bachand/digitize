@@ -12,5 +12,7 @@ task :transcode, [:source_path] do |task, args|
    error_and_exit("#{source_path} does not exist.") unless File.exist?(source_path)
    error_and_exit('Source must be a file.') unless Pathname.new(source_path).file?
 
-   HandBrake.new().encode(source_path)
+   output_dirname = File.dirname(source_path)
+
+   HandBrake.new().encode(source_path, output_dirname)
 end

@@ -4,10 +4,8 @@ HANDBRAKE_PATH = File.join(HANDBRAKE_PREFIX, 'bin/HandbrakeCLI')
 # Wrapper around Handbrake CLI
 class HandBrake
 
-  def encode(source_path)
+  def encode(source_path, output_dirname)
     escaped_source_path = Shellwords.escape(source_path)
-
-    output_dirname = File.dirname(source_path)
     escaped_output_dirname = Shellwords.escape(output_dirname)
     puts("Output: #{escaped_output_dirname}")
 
