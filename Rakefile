@@ -13,6 +13,7 @@ task :transcode, [:source_path] do |task, args|
    error_and_exit('Source must be a file.') unless Pathname.new(source_path).file?
 
    output_dirname = File.dirname(source_path)
+   output_path = File.join('out.mp4')
 
-   HandBrake.new().encode(source_path, output_dirname)
+   HandBrake.new().encode(source_path, output_path)
 end
