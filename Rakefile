@@ -15,5 +15,8 @@ task :transcode, [:source_path] do |task, args|
    output_dirname = File.dirname(source_path)
    output_path = File.join('out.mp4')
 
-   HandBrake.new().encode(source_path, output_path)
+   preset_path = 'config/handbrake_dvd_export.json'
+   preset_name = 'handbrake_dvd_export'
+
+   HandBrake.new().encode(source_path, output_path, preset_path, preset_name)
 end
