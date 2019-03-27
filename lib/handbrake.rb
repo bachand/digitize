@@ -11,6 +11,7 @@ class HandBrake
     escaped_output_path = Shellwords.escape(output_path)
     puts("Output: #{escaped_output_path}")
 
-    run("#{HANDBRAKE_PATH} -i #{escaped_source_path}")
+    command = "#{HANDBRAKE_PATH} -i #{escaped_source_path} -o #{escaped_output_path} -e x264 -q 20 -B 160"
+    run(command)
   end
 end
