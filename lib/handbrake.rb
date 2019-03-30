@@ -11,9 +11,11 @@ class HandBrake
     escaped_output_path = Shellwords.escape(output_path)
     escaped_preset_path = Shellwords.escape(preset_path)
 
+    # --main-feature tells Handbrake to find the title that is the main feature and encode that.
     command = %{
 #{HANDBRAKE_PATH} \
   --preset-import-file #{escaped_preset_path} \
+  --main-feature \
   -Z "#{preset_name}" \
   -i #{escaped_source_path} \
   -o #{escaped_output_path} \
