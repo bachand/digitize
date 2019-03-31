@@ -2,6 +2,7 @@ require 'shellwords'
 
 require_relative 'lib/common.rb'
 require_relative 'lib/handbrake.rb'
+require_relative 'lib/manifest.rb'
 
 # These commands require you first to run `brew bundle` in this repo.
 
@@ -23,5 +24,5 @@ end
 
 desc 'Creates a JSON manifest file'
 task :manifest do
-  puts "manifest"
+  Manifest.new().create()
 end
