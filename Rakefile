@@ -13,7 +13,7 @@ task :transcode, [:source_path] do |task, args|
    error_and_exit('Source must be a file.') unless Pathname.new(source_path).file?
 
    output_dirname = File.dirname(source_path)
-   output_path = File.join('out.m4v')
+   output_path = File.join(output_dirname, 'out.m4v')
 
    preset_path = 'config/handbrake_dvd_export.json'
    preset_name = 'handbrake_dvd_export'
