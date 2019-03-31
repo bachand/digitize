@@ -20,3 +20,8 @@ task :transcode, [:source_path] do |task, args|
 
    HandBrake.new().encode(source_path, output_path, preset_path, preset_name)
 end
+
+desc 'Creates a JSON manifest file'
+task :manifest do
+  puts "manifest"
+end
