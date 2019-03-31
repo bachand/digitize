@@ -1,6 +1,11 @@
+require 'json'
+
 class Manifest
 
   def create
-    puts "manifest"
+    data = {
+      'manifest' => 'dummy'
+    }
+    puts JSON.generate(data)
   end
 end
