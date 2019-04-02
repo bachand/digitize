@@ -1,9 +1,17 @@
 require 'json'
+require 'tty-prompt'
 
 class Manifest
 
-  def create
-    conference = 'My Conference'
+  def create_via_prompt
+    prompt = TTY::Prompt.new
+    conference = prompt.ask('What is the conference name?')
+    create(conference)
+  end
+
+  private
+
+  def create(conference)
     title = 'Tigers and Lions and Bears'
     speakers = [
       'Sylvester Stallone',

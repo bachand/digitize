@@ -24,5 +24,5 @@ end
 
 desc 'Creates a JSON manifest file'
 task :manifest do
-  Manifest.new().create()
+  Manifest.new().create_via_prompt()
 end
