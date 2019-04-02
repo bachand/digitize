@@ -31,6 +31,6 @@ class Manifest
       'data_paths' => data_paths,
     }
 
-    puts JSON.generate(data)
+    puts JSON.pretty_generate(data)
   end
 end
