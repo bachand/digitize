@@ -1,5 +1,5 @@
-require 'json'
 require 'tty-prompt'
+require 'yaml'
 
 class Manifest
 
@@ -31,6 +31,6 @@ class Manifest
       'data_paths' => data_paths,
     }
 
-    puts JSON.pretty_generate(data)
+    puts data.to_yaml
   end
 end
