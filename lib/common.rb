@@ -23,5 +23,5 @@ end
 
 # Runs a shell command.
 def run(command)
-  system(command)
+  Kernel.system(command)
 end
