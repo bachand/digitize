@@ -2,6 +2,19 @@ require 'handbrake.rb'
 
 describe HandBrake do
 
+  describe '#num_chapters' do
+
+    it 'invokes the CLI correctly' do
+      source_path = '/src/path'
+
+      regex = /HandbrakeCLI.*/
+
+      expect(Kernel).to receive(:system).with(regex).and_return(true)
+
+      subject.num_chapters(source_path)
+    end
+  end
+
   describe '#encode' do
 
     it 'invokes the CLI correctly' do

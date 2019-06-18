@@ -6,6 +6,19 @@ HANDBRAKE_PATH = File.join(HANDBRAKE_PREFIX, 'bin/HandbrakeCLI')
 # Wrapper around Handbrake CLI
 class HandBrake
 
+  ##
+  # Returns the number of chapters in a video.
+  def num_chapters(path)
+    # TODO: finish implementing
+
+    command = %{
+#{HANDBRAKE_PATH} \
+    }
+    run(command)
+  end
+
+  ##
+  # Encodes a source video with a specified preset.
   def encode(source_path, output_path, preset_path, preset_name)
     escaped_source_path = Shellwords.escape(source_path)
     escaped_output_path = Shellwords.escape(output_path)
