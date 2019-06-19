@@ -9,11 +9,8 @@ class HandBrake
   ##
   # Returns the number of chapters in a video.
   def num_chapters(path)
-    # TODO: finish implementing
-
-    command = %{
-#{HANDBRAKE_PATH} \
-    }
+    escaped_path = Shellwords.escape(path)
+    command = "#{HANDBRAKE_PATH} --scan -i #{escaped_path}"
     run(command)
   end
 
