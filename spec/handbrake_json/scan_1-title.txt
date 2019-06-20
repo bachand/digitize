@@ -1,0 +1,97 @@
+[21:01:56] hb_init: starting libhb thread
+[21:01:56] thread 700004906000 started ("libhb")
+HandBrake 1.2.1 (2019021800) - Darwin x86_64 - https://handbrake.fr
+8 CPUs detected
+Opening /Users/michael/Desktop/dvds/Foo.dmg...
+[21:01:56] CPU: Intel(R) Core(TM) i7-4980HQ CPU @ 2.80GHz
+[21:01:56]  - Intel microarchitecture Haswell
+[21:01:56]  - logical processor count: 8
+[21:01:56] hb_scan: path=/Users/michael/Desktop/dvds/Foo.dmg, title_index=1
+disc.c:424: error opening file BDMV/index.bdmv
+disc.c:424: error opening file BDMV/BACKUP/index.bdmv
+[21:01:56] bd: not a bd - trying as a stream/file instead
+libdvdnav: Using dvdnav version 6.0.0
+libdvdread: Encrypted DVD support unavailable.
+libdvdnav: DVD Title: Foo
+libdvdnav: DVD Serial Number: 7A9B2944SONYSONY
+libdvdnav: DVD Title (Alternative): UNTITLED
+libdvdnav: DVD disk reports itself with Region mask 0x00000000. Regions: 1 2 3 4 5 6 7 8
+libdvdread: Encrypted DVD support unavailable.
+[21:01:56] scan: DVD has 1 title(s)
+[21:01:56] scan: scanning title 1
+[21:01:56] scan: opening IFO for VTS 1
+[21:01:56] scan: duration is 02:06:03 (7563567 ms)
+[21:01:56] pgc_id: 1, pgn: 1: pgc: 0x7ffeb3c6ec20
+[21:01:56] scan: vts=1, ttn=1, cells=0->24, blocks=0->1981043, 1981044 blocks
+[21:01:56] scan: checking audio 1
+[21:01:56] scan: id=0x80bd, lang=Unknown (AC3), 3cc=und ext=0
+[21:01:56] scan: title 1 has 25 chapters
+[21:01:56] scan: chap 1 c=0->0, b=0->83327 (83328), 318133 ms
+[21:01:56] scan: chap 2 c=1->1, b=83328->152012 (68685), 261767 ms
+[21:01:56] scan: chap 3 c=2->2, b=152013->232844 (80832), 310367 ms
+[21:01:56] scan: chap 4 c=3->3, b=232845->301312 (68468), 259300 ms
+[21:01:56] scan: chap 5 c=4->4, b=301313->391313 (90001), 344266 ms
+[21:01:56] scan: chap 6 c=5->5, b=391314->472755 (81442), 310266 ms
+[21:01:56] scan: chap 7 c=6->6, b=472756->548655 (75900), 289433 ms
+[21:01:56] scan: chap 8 c=7->7, b=548656->614105 (65450), 250867 ms
+[21:01:56] scan: chap 9 c=8->8, b=614106->705138 (91033), 346333 ms
+[21:01:56] scan: chap 10 c=9->9, b=705139->785120 (79982), 305033 ms
+[21:01:56] scan: chap 11 c=10->10, b=785121->862655 (77535), 296834 ms
+[21:01:56] scan: chap 12 c=11->11, b=862656->940984 (78329), 298166 ms
+[21:01:56] scan: chap 13 c=12->12, b=940985->1017387 (76403), 291834 ms
+[21:01:56] scan: chap 14 c=13->13, b=1017388->1107987 (90600), 345433 ms
+[21:01:56] scan: chap 15 c=14->14, b=1107988->1176771 (68784), 262300 ms
+[21:01:56] scan: chap 16 c=15->15, b=1176772->1253531 (76760), 292900 ms
+[21:01:56] scan: chap 17 c=16->16, b=1253532->1335384 (81853), 312166 ms
+[21:01:56] scan: chap 18 c=17->17, b=1335385->1411337 (75953), 290934 ms
+[21:01:56] scan: chap 19 c=18->18, b=1411338->1483481 (72144), 282867 ms
+[21:01:56] scan: chap 20 c=19->19, b=1483482->1570684 (87203), 324100 ms
+[21:01:56] scan: chap 21 c=20->20, b=1570685->1644071 (73387), 280200 ms
+[21:01:56] scan: chap 22 c=21->21, b=1644072->1732863 (88792), 338800 ms
+[21:01:56] scan: chap 23 c=22->22, b=1732864->1806353 (73490), 281834 ms
+[21:01:56] scan: chap 24 c=23->23, b=1806354->1872664 (66311), 251567 ms
+[21:01:56] scan: chap 25 c=24->24, b=1872665->1981043 (108379), 417867 ms
+[21:01:56] scan: aspect = 16:9
+[21:01:56] scan: decoding previews for title 1
+libdvdnav: DVD disk reports itself with Region mask 0x00000000. Regions: 1 2 3 4 5 6 7 8
+[21:01:56] scan: title angle(s) 1
+[ac3 @ 0x7ffeb4036800] frame sync error
+[21:01:56] scan: audio 0x80bd: ac3, rate=48000Hz, bitrate=192000 Unknown (AC3) (2.0 ch)
+[21:01:56] scan: 10 previews, 720x480, 29.970 fps, autocrop = 0/0/0/8, aspect 16:9, PAR 32:27
+[21:01:56] libhb: scan thread found 1 valid title(s)
++ title 1:
+  + vts 1, ttn 1, cells 0->24 (1981044 blocks)
+  + duration: 02:06:03
+  + size: 720x480, pixel aspect: 32/27, display aspect: 1.78, 29.970 fps
+  + autocrop: 0/0/0/8
+  + chapters:
+    + 1: cells 0->0, 83328 blocks, duration 00:05:18
+    + 2: cells 1->1, 68685 blocks, duration 00:04:22
+    + 3: cells 2->2, 80832 blocks, duration 00:05:10
+    + 4: cells 3->3, 68468 blocks, duration 00:04:19
+    + 5: cells 4->4, 90001 blocks, duration 00:05:44
+    + 6: cells 5->5, 81442 blocks, duration 00:05:10
+    + 7: cells 6->6, 75900 blocks, duration 00:04:49
+    + 8: cells 7->7, 65450 blocks, duration 00:04:11
+    + 9: cells 8->8, 91033 blocks, duration 00:05:46
+    + 10: cells 9->9, 79982 blocks, duration 00:05:05
+    + 11: cells 10->10, 77535 blocks, duration 00:04:57
+    + 12: cells 11->11, 78329 blocks, duration 00:04:58
+    + 13: cells 12->12, 76403 blocks, duration 00:04:52
+    + 14: cells 13->13, 90600 blocks, duration 00:05:45
+    + 15: cells 14->14, 68784 blocks, duration 00:04:22
+    + 16: cells 15->15, 76760 blocks, duration 00:04:53
+    + 17: cells 16->16, 81853 blocks, duration 00:05:12
+    + 18: cells 17->17, 75953 blocks, duration 00:04:51
+    + 19: cells 18->18, 72144 blocks, duration 00:04:43
+    + 20: cells 19->19, 87203 blocks, duration 00:05:24
+    + 21: cells 20->20, 73387 blocks, duration 00:04:40
+    + 22: cells 21->21, 88792 blocks, duration 00:05:39
+    + 23: cells 22->22, 73490 blocks, duration 00:04:42
+    + 24: cells 23->23, 66311 blocks, duration 00:04:12
+    + 25: cells 24->24, 108379 blocks, duration 00:06:58
+  + audio tracks:
+    + 1, Unknown (AC3) (2.0 ch) (iso639-2: und), 48000Hz, 192000bps
+  + subtitle tracks:
+
+HandBrake has exited.
