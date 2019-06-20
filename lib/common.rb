@@ -22,6 +22,6 @@ def error_and_exit(message)
 end
 
 # Runs a shell command.
-def run(command)
+def shell_run(command)
   Kernel.system(command)
 end

@@ -11,7 +11,7 @@ class HandBrake
   def num_chapters(path)
     escaped_path = Shellwords.escape(path)
     command = "#{HANDBRAKE_PATH} --scan -i #{escaped_path}"
-    run(command)
+    shell_run(command)
   end
 
   ##
@@ -30,6 +30,6 @@ class HandBrake
   -i #{escaped_source_path} \
   -o #{escaped_output_path} \
     }
-    run(command)
+    shell_run(command)
   end
 end
