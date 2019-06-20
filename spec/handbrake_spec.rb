@@ -4,14 +4,18 @@ describe HandBrake do
 
   describe '#num_chapters' do
 
-    it 'invokes the CLI correctly' do
-      source_path = '/src/path'
+    it 'returns one title for a DVD with one title' do
+      fixture_path = File.dirname(__FILE__) + '/handbrake_fixtures/scan_1-title.txt'
+      fixture_data = File.read(fixture_path)
+      allow(Shell).to receive(:output).and_return(fixture_data)
+      expect(subject.num_chapters('/fake/path.dmg')).to eq(1)
+    end
 
-      regex = /HandbrakeCLI.*/
-
-      expect(Kernel).to receive(:system).with(regex).and_return(true)
-
-      subject.num_chapters(source_path)
+    it 'returns three titles for a DVD with three titles' do
+      fixture_path = File.dirname(__FILE__) + '/handbrake_fixtures/scan_3-titles.txt'
+      fixture_data = File.read(fixture_path)
+      allow(Shell).to receive(:output).and_return(fixture_data)
+      expect(subject.num_chapters('/fake/path.dmg')).to eq(3)
     end
   end
 

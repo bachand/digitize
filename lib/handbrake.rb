@@ -11,7 +11,7 @@ class HandBrake
   def num_chapters(path)
     escaped_path = Shellwords.escape(path)
     command = "#{HANDBRAKE_PATH} --scan -i #{escaped_path}"
-    shell_run(command)
+    Shell.output(command).match(/DVD has ([0-9]+) title/).captures.first.to_i
   end
 
   ##
