@@ -1,4 +1,5 @@
 require_relative 'common.rb'
+require_relative 'shell.rb'
 
 HANDBRAKE_PREFIX = `brew --prefix handbrake`.strip
 HANDBRAKE_PATH = File.join(HANDBRAKE_PREFIX, 'bin/HandbrakeCLI')
