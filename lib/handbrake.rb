@@ -1,3 +1,5 @@
+require 'tty-prompt'
+
 require_relative 'shell.rb'
 
 HANDBRAKE_PREFIX = `brew --prefix handbrake`.strip
@@ -6,9 +8,13 @@ HANDBRAKE_PATH = File.join(HANDBRAKE_PREFIX, 'bin/HandbrakeCLI')
 # Wrapper around Handbrake CLI
 class HandBrake
 
+  def initialize
+    @prompt = TTY::Prompt.new
+  end
+
   ##
-  # Returns the number of chapters in a video.
-  def num_chapters(path)
+  # Returns the number of titles in a video.
+  def num_titles(path)
     escaped_path = Shellwords.escape(path)
     arguments = "--scan -i #{escaped_path}"
     command = shell_command(arguments)
@@ -18,6 +24,11 @@ class HandBrake
   ##
   # Encodes a source video with a specified preset.
   def encode(source_path, output_path, preset_path, preset_name)
+    num_titles = num_titles(source_path)
+    unless num_titles == 1
+      return unless @prompt.yes?("This DVD has #{num_titles}. This script will only encode the first one. Proceed?")
+    end
+
     escaped_source_path = Shellwords.escape(source_path)
     escaped_output_path = Shellwords.escape(output_path)
     escaped_preset_path = Shellwords.escape(preset_path)

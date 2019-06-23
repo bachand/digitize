@@ -2,20 +2,20 @@ require 'handbrake.rb'
 
 describe HandBrake do
 
-  describe '#num_chapters' do
+  describe '#num_titles' do
 
     it 'returns one title for a DVD with one title' do
       fixture_path = File.dirname(__FILE__) + '/handbrake_fixtures/scan_1-title.txt'
       fixture_data = File.read(fixture_path)
       allow(Shell).to receive(:output).and_return(fixture_data)
-      expect(subject.num_chapters('/fake/path.dmg')).to eq(1)
+      expect(subject.num_titles('/fake/path.dmg')).to eq(1)
     end
 
     it 'returns three titles for a DVD with three titles' do
       fixture_path = File.dirname(__FILE__) + '/handbrake_fixtures/scan_3-titles.txt'
       fixture_data = File.read(fixture_path)
       allow(Shell).to receive(:output).and_return(fixture_data)
-      expect(subject.num_chapters('/fake/path.dmg')).to eq(3)
+      expect(subject.num_titles('/fake/path.dmg')).to eq(3)
     end
   end
 
@@ -29,6 +29,7 @@ describe HandBrake do
 
       regex = /HandbrakeCLI.*#{preset_path}.*#{preset_name}.*#{source_path}.*#{output_path}/
 
+      allow(subject).to receive(:num_titles).and_return(1)
       expect(Kernel).to receive(:system).with(regex).and_return(true)
 
       subject.encode(source_path, output_path, preset_path, preset_name)
