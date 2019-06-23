@@ -1,4 +1,3 @@
-require_relative 'common.rb'
 require_relative 'shell.rb'
 
 HANDBRAKE_PREFIX = `brew --prefix handbrake`.strip
@@ -31,6 +30,6 @@ class HandBrake
   -i #{escaped_source_path} \
   -o #{escaped_output_path} \
     }
-    shell_run(command)
+    Shell.run(command)
   end
 end

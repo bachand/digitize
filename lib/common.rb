@@ -20,8 +20,3 @@ def error_and_exit(message)
   error(message)
   exit(1)
 end
-
-# Runs a shell command.
-def shell_run(command)
-  Kernel.system(command)
-end
