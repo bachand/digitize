@@ -4,18 +4,22 @@ describe HandBrake do
 
   describe '#num_titles' do
 
-    it 'returns one title for a DVD with one title' do
-      fixture_path = File.dirname(__FILE__) + '/handbrake_fixtures/scan_1-title.txt'
-      fixture_data = File.read(fixture_path)
-      allow(Shell).to receive(:output).and_return(fixture_data)
-      expect(subject.num_titles('/fake/path.dmg')).to eq(1)
+    context 'for a DVD with one title' do
+      it 'returns one title' do
+        fixture_path = File.dirname(__FILE__) + '/handbrake_fixtures/scan_1-title.txt'
+        fixture_data = File.read(fixture_path)
+        allow(Shell).to receive(:output).and_return(fixture_data)
+        expect(subject.num_titles('/fake/path.dmg')).to eq(1)
+      end
     end
 
-    it 'returns three titles for a DVD with three titles' do
-      fixture_path = File.dirname(__FILE__) + '/handbrake_fixtures/scan_3-titles.txt'
-      fixture_data = File.read(fixture_path)
-      allow(Shell).to receive(:output).and_return(fixture_data)
-      expect(subject.num_titles('/fake/path.dmg')).to eq(3)
+    context 'for a DVD with three titles' do
+      it 'returns three titles' do
+        fixture_path = File.dirname(__FILE__) + '/handbrake_fixtures/scan_3-titles.txt'
+        fixture_data = File.read(fixture_path)
+        allow(Shell).to receive(:output).and_return(fixture_data)
+        expect(subject.num_titles('/fake/path.dmg')).to eq(3)
+      end
     end
   end
 
