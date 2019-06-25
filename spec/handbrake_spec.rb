@@ -18,6 +18,7 @@ describe HandBrake do
     end
 
     context 'for a DVD with three titles' do
+
       before(:each) do
         fixture_path = File.dirname(__FILE__) + '/handbrake_fixtures/scan_3-titles.txt'
         fixture_data = File.read(fixture_path)
