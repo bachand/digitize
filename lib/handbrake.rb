@@ -28,7 +28,7 @@ class HandBrake
     num_titles = num_titles(source_path)
     unless num_titles == 1
       choices = title_choices(num_titles)
-      question = "This DVD has #{num_titles}. Which one would you like to process?"
+      question = "This DVD has #{num_titles} titles. Which one would you like to process?"
       title = @prompt.select(question, choices)
       info("You chose title #{title} but this functionality is not yet implemented. Goodbye")
       return
