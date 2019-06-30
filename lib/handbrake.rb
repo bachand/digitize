@@ -1,5 +1,6 @@
 require 'tty-prompt'
 
+require_relative 'common.rb'
 require_relative 'shell.rb'
 
 HANDBRAKE_PREFIX = `brew --prefix handbrake`.strip
@@ -26,7 +27,11 @@ class HandBrake
   def encode(source_path, output_path, preset_path, preset_name)
     num_titles = num_titles(source_path)
     unless num_titles == 1
-      return unless @prompt.yes?("This DVD has #{num_titles}. This script will only encode the first one. Proceed?")
+      choices = title_choices(num_titles)
+      question = "This DVD has #{num_titles}. Which one would you like to process?"
+      title = @prompt.select(question, choices)
+      info("You chose title #{title} but this functionality is not yet implemented. Goodbye")
+      return
     end
 
     escaped_source_path = Shellwords.escape(source_path)
@@ -52,5 +57,16 @@ class HandBrake
   # default it seems to print to STDERR.
   def shell_command(arguments)
     "#{HANDBRAKE_PATH} #{arguments.strip} 2>&1"
+  end
+
+  ##
+  # Creates a hash of titles choices to be passed to `TTY::Prompt`'s `select` method.
+  def title_choices(num_titles)
+    choices = {}
+    num_titles.times do |index|
+      title = index + 1
+      choices.merge!({ "Title #{title}" => title })
+    end
+    return choices
   end
 end

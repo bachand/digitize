@@ -3,6 +3,12 @@ require 'tty-prompt'
 
 describe HandBrake do
 
+  before(:each) do
+    allow_any_instance_of(Object).to receive(:info)
+    allow_any_instance_of(Object).to receive(:warning)
+    allow_any_instance_of(Object).to receive(:error)
+  end
+
   describe '#num_titles' do
 
     context 'for a DVD with one title' do
@@ -77,9 +83,9 @@ describe HandBrake do
         allow(Shell).to receive(:output).and_return(fixture_data)
       end
 
-      it 'prompts asking if the user wants to proceed with encoding the first title' do
+      it 'prompts to choose a title' do
         allow(Kernel).to receive(:system)
-        expect(@prompt).to receive(:yes?).and_return(true)
+        expect(@prompt).to receive(:select)
 
         subject.encode(@source_path, @output_path, @preset_path, @preset_name)
       end
