@@ -92,11 +92,12 @@ describe HandBrake do
 
       context 'when the user selects a title' do
         before(:each) do
-          # select the second title
+          # Select the second title.
           expect(@prompt).to receive(:select).and_return(1)
         end
 
         it 'invokes the CLI correctly' do
+          # Check that the shell is invoked with `--title 1`, which corresponds to the second title.
           regex = /HandbrakeCLI.*--title 1.*#{@preset_path}.*#{@preset_name}.*#{@source_path}.*#{@output_path}/
 
           expect(Kernel).to receive(:system).with(regex).and_return(true)
