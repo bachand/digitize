@@ -26,6 +26,7 @@ class HandBrake
   # Encodes a source video with a specified preset. Asks the user which title they would like to
   # encode if the provided DVD has more than one title.
   def encode(source_path, output_path, preset_path, preset_name)
+    # Default to the first title, since all DVDs should have at least one title.
     title_to_encode = 0
 
     num_titles = num_titles(source_path)
