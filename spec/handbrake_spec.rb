@@ -51,7 +51,7 @@ describe HandBrake do
     }
 
     it 'invokes the CLI correctly' do
-      regex = /HandbrakeCLI.*#{@preset_path}.*#{@preset_name}.*#{@source_path}.*#{@output_path}/
+      regex = /HandbrakeCLI.*--title 0.*#{@preset_path}.*#{@preset_name}.*#{@source_path}.*#{@output_path}/
 
       allow(subject).to receive(:num_titles).and_return(1)
       expect(Kernel).to receive(:system).with(regex).and_return(true)
@@ -88,6 +88,21 @@ describe HandBrake do
         expect(@prompt).to receive(:select)
 
         subject.encode(@source_path, @output_path, @preset_path, @preset_name)
+      end
+
+      context 'when the user selects a title' do
+        before(:each) do
+          # select the second title
+          expect(@prompt).to receive(:select).and_return(1)
+        end
+
+        it 'invokes the CLI correctly' do
+          regex = /HandbrakeCLI.*--title 1.*#{@preset_path}.*#{@preset_name}.*#{@source_path}.*#{@output_path}/
+
+          expect(Kernel).to receive(:system).with(regex).and_return(true)
+
+          subject.encode(@source_path, @output_path, @preset_path, @preset_name)
+        end
       end
     end
   end
