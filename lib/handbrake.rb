@@ -27,7 +27,7 @@ class HandBrake
   # encode if the provided DVD has more than one title.
   def encode(source_path, output_path, preset_path, preset_name)
     # Default to the first title, since all DVDs should have at least one title.
-    title_to_encode = 0
+    title_to_encode = 1
 
     num_titles = num_titles(source_path)
     unless num_titles == 1
