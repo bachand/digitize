@@ -51,7 +51,8 @@ describe HandBrake do
     }
 
     it 'invokes the CLI correctly' do
-      regex = /HandbrakeCLI.*#{@preset_path}.*#{@preset_name}.*#{@source_path}.*#{@output_path}/
+      # By default we encode the first title.
+      regex = /HandbrakeCLI.*--title 1.*#{@preset_path}.*#{@preset_name}.*#{@source_path}.*#{@output_path}/
 
       allow(subject).to receive(:num_titles).and_return(1)
       expect(Kernel).to receive(:system).with(regex).and_return(true)
@@ -88,6 +89,22 @@ describe HandBrake do
         expect(@prompt).to receive(:select)
 
         subject.encode(@source_path, @output_path, @preset_path, @preset_name)
+      end
+
+      context 'when the user selects a title' do
+        before(:each) do
+          # Select the second title. Titles have their natural index and are not 0-indexed.
+          expect(@prompt).to receive(:select).and_return(2)
+        end
+
+        it 'invokes the CLI correctly' do
+          # Check that the shell is invoked with `--title 2`, which corresponds to the second title.
+          regex = /HandbrakeCLI.*--title 2.*#{@preset_path}.*#{@preset_name}.*#{@source_path}.*#{@output_path}/
+
+          expect(Kernel).to receive(:system).with(regex).and_return(true)
+
+          subject.encode(@source_path, @output_path, @preset_path, @preset_name)
+        end
       end
     end
   end

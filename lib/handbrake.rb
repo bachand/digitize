@@ -23,25 +23,26 @@ class HandBrake
   end
 
   ##
-  # Encodes a source video with a specified preset.
+  # Encodes a source video with a specified preset. Asks the user which title they would like to
+  # encode if the provided DVD has more than one title.
   def encode(source_path, output_path, preset_path, preset_name)
+    # Default to the first title, since all DVDs should have at least one title.
+    title_to_encode = 1
+
     num_titles = num_titles(source_path)
     unless num_titles == 1
       choices = title_choices(num_titles)
       question = "This DVD has #{num_titles} titles. Which one would you like to process?"
-      title = @prompt.select(question, choices)
-      info("You chose title #{title} but this functionality is not yet implemented. Goodbye")
-      return
+      title_to_encode = @prompt.select(question, choices)
     end
 
     escaped_source_path = Shellwords.escape(source_path)
     escaped_output_path = Shellwords.escape(output_path)
     escaped_preset_path = Shellwords.escape(preset_path)
 
-    # --main-feature tells Handbrake to find the title that is the main feature and encode that.
     arguments = <<~EOT
+    --title #{title_to_encode} \
     --preset-import-file #{escaped_preset_path} \
-    --main-feature \
     -Z "#{preset_name}" \
     -i #{escaped_source_path} \
     -o #{escaped_output_path}
