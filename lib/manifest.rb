@@ -7,36 +7,44 @@ class Manifest
     prompt = TTY::Prompt.new
     conference = prompt.ask('What is the conference name?')
     year = prompt.ask('What is the year of the conference?')
-    data_paths = []
+
+    recordings = []
     begin
-      data_path = prompt.ask('What are the data paths?')
-      data_paths << data_path
-    end while prompt.yes?("More data paths?", default: false)
-    titles = []
-    begin
-      title = prompt.ask('What is the title of the recording?')
+      name = prompt.ask('What is the name of this recording?')
+
       speakers = []
       begin
         speaker = prompt.ask('Who spoke in this recording?')
         speakers << speaker
-      end while prompt.yes?("More speakers?", default: false)
-      titles << {
-        'title' => title,
-        'speakers' => speakers,
-      }
-    end while prompt.yes?("More titles?", default: false)
+      end while prompt.yes?('More speakers?', default: false)
 
-    create(conference, year, titles, data_paths)
+      data = []
+      begin
+        dvd_image = prompt.ask('What is the path to the DVD image?')
+        title = prompt.ask('What title of the DVD is this recording associated with?').to_i
+        data << {
+          'dvd_image' => dvd_image,
+          'title' => title,
+        }
+      end while prompt.yes?("More data paths?", default: false)
+
+      recordings << {
+        'name' => name,
+        'speakers' => speakers,
+        'data' => data,
+      }
+    end while prompt.yes?('More recordings?', default: false)
+
+    create(conference, year, recordings)
   end
 
   private
 
-  def create(conference, year, titles, data_paths)
+  def create(conference, year, recordings)
     data = {
       'conference' => conference,
       'year' => year,
-      'titles' => titles,
-      'data_paths' => data_paths,
+      'recordings' => recordings,
     }
 
     puts data.to_yaml
