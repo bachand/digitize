@@ -6,7 +6,7 @@ class Shell
   def self.output(command)
     output, error = Open3.capture2(command)
     unless error.success?
-      raise StandardError.new 'Command failed'
+      raise StandardError.new "Command: #{command}\nError: #{error}"
     end
     return output
   end
