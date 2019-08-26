@@ -19,7 +19,14 @@ class HandBrake
     escaped_path = Shellwords.escape(path)
     arguments = "--scan -i #{escaped_path}"
     command = shell_command(arguments)
-    Shell.output(command).match(/DVD has ([0-9]+) title/).captures.first.to_i
+    shell_output = nil
+    begin
+      shell_output = Shell.output(command)
+    rescue Shell::ShellError => e
+      error("Command: #{command}\nError: #{e.wrappedError}")
+      shell_output = e.output
+    end
+    shell_output.match(/DVD has ([0-9]+) title/).captures.first.to_i
   end
 
   ##

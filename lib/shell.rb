@@ -1,12 +1,23 @@
 require 'open3'
+require_relative 'common'
 
 class Shell
 
+  class ShellError < StandardError
+    attr_reader :output
+    attr_reader :wrappedError
+
+    def initialize(output, wrappedError)
+      @output = output
+      @wrappedError = wrappedError
+    end
+  end
+
   # Runs a shell command and returns the output.
   def self.output(command)
-    output, error = Open3.capture2(command)
-    unless error.success?
-      raise StandardError.new "Command: #{command}\nError: #{error}"
+    output, shell_error = Open3.capture2(command)
+    unless shell_error.success?
+      raise ShellError.new(output, shell_error)
     end
     return output
   end
