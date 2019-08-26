@@ -15,9 +15,9 @@ class Shell
 
   # Runs a shell command and returns the output.
   def self.output(command)
-    output, shell_error = Open3.capture2(command)
-    unless shell_error.success?
-      raise ShellError.new(output, shell_error)
+    output, error = Open3.capture2(command)
+    unless error.success?
+      raise ShellError.new(output, error)
     end
     return output
   end
